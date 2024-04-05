@@ -1,0 +1,43 @@
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="searchuser">
+  <table width="200" border="1"  class="table table-bordered">
+    <tr>
+      <td>Name</td>
+      <td><label>
+        <input type="text" name="textfield" />
+      </label></td>
+      <td colspan="4"><label>
+        <input type="submit" name="Submit" value="Search" />
+      </label></td>
+    </tr>
+
+    <tr>
+      <td>Name</td>
+      <td>Phone</td>
+      <td>Email</td>
+      <td>Address</td>
+      <td>Photo</td>
+      <td>block/unblock</td>
+    </tr>
+
+       {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.name }}</td>
+      <td>{{ i.phone }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.address }}</td>
+      <td><img src="media/{{ i.photo }}" height="100px" width="100px" alt=""/></td>
+        {% if i.LOGIN.type == 'user' %}
+            <td><a href="blockuser/{{ i.LOGIN.id }}">Block</a><p></p>
+        {% else %}
+        <td><a href="unblockuser/{{ i.LOGIN.id }}">UnBlock</a></td>
+    {% endif %}
+
+    </tr>
+       {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'user/userindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="usercompsearch">
+  <table width="200" border="1" class="table table-bordered">
+    <tr>
+      <td>Date</td>
+      <td><label>
+        <input type="date" name="textfield" />
+      </label></td>
+      <td><label>
+        <input type="submit" name="Submit" value="Search"  class="btn btn-outline-primary"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Complaints</td>
+      <td>Date</td>
+      <td>Reply</td>
+    </tr>
+{% for i in val %}
+    <tr>
+      <td>&nbsp;{{i.complaint}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.reply}}</td>
+    </tr>
+      {% endfor %}
+	<tr>
+	<td colspan="3"><a href="usercomplaint2" class="btn btn-outline-primary">Add Complaints</a></td>
+	</tr>
+  </table>
+</form>
+</body>
+{% endblock %}
